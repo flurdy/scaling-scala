@@ -7,7 +7,7 @@
 		<title>Scaling Scala by @flurdy</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/white.css">
+		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -19,6 +19,38 @@
 				top: 1.5em;
 				right: 0em;
 				transform: scale(.15);
+			}
+			.peppa2 {
+				height: 180px;
+				width: 240px;
+				margin-left:  50px;
+				-moz-border-radius: 35px;
+				-webkit-border-radius: 35px;
+				border-radius: 35px;
+			}
+			.facetime {
+				width: 160px;
+				height: 160px;
+				border-radius: 100px;
+				-webkit-border-radius: 100px;
+				-moz-border-radius: 100px;
+				box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+				-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+				moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+
+				clear:both;
+			}
+			.peppa {
+				width: 240px;
+				height: 160px;
+				border-radius: 100px;
+				-webkit-border-radius: 100px;
+				-moz-border-radius: 100px;
+				box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+				-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+				moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+
+				clear:both;
 			}
 		</style>
 
@@ -36,7 +68,7 @@
 			<div class="slides">
 
 
-				<section data-markdown data-background="#009900">
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
     				<script type="text/template">
 ## Scaling Scala
 
@@ -45,28 +77,32 @@ not performance but scaling people
 by @flurdy
 
 Note:
+
+
 					</script>
 				</section>
 
-				<section data-markdown data-background="#009900">
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
-### Talk context
+## Talk context
 
 
 
-- Challenges
-- Coding Styles
-- Frameworks
+- Scaling challenges
+- Coding Styles &amp; frameworks
 - Libraries &amp; versions
 - Architecture &amp; pipeline
-- Tooling
-- Best practices
-- Battle scars
+- Tooling &amp; automation
+- Best practices &amp; battle scars
 
-- Best practices for scaling = best practices for non scaling <!-- .element: class="fragment fade-up" data-fragment-index="2" -->
+Best practices for scaling = best practices for non scaling <!-- .element: class="fragment fade-up" data-fragment-index="2" -->
 
 Note:
+
+Preaching to the converted
+
+Or worse/better already doing better things
 
 Keeping version up to date across the teams and projects is tricky
 
@@ -75,21 +111,30 @@ Not covering:
 - Recruitment, 
 - Not mandating tech, just showing examples
 
-
 					</script>
 				</section>
 
-				<section data-markdown data-background="#009900">
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
     				<script type="text/template">
 
-### Who am I
+## Who am I
 
-* Ivar Abrahamsen
-* Norwegian. Live in England 
-* Writes flurdy.com  <!-- .element: class="fragment fade-up" data-fragment-index="2" -->
-* Rants at @flurdy <!-- .element: class="fragment fade-up" data-fragment-index="2" -->
-* Consultant at eray.uk, Eray by Flurdy <!-- .element: class="fragment fade-up" data-fragment-index="3" -->
-* Technical Architect, Tech Lead, Dev<!-- .element: class="fragment fade-up" data-fragment-index="3" -->
+<span class="fragment fade-in" data-fragment-index="1">
+	<img src="/images/ivar.jpg" class="fragment facetime" data-fragment-index="1"/>
+</span>
+<span class="fragment fade-in" data-fragment-index="2">
+	<img src="/images/family.jpg" class="fragment peppa" data-fragment-index="2"/>
+</span>
+
+
+<ul>
+	<li class="fragment fade-up" data-fragment-index="1">Ivar Abrahamsen</li>
+	<li class="fragment fade-up" data-fragment-index="2">Norwegian. Live in England</li>
+	<li class="fragment fade-up" data-fragment-index="3">Consultant at [eray.uk](http://eray.uk), Eray by Flurdy</li>
+	<li class="fragment fade-up" data-fragment-index="3">Technical Architect, Tech Lead, Dev</li>
+	<li class="fragment fade-up" data-fragment-index="4">Writes at <a href="https://flurdy.com/docs">flurdy.com</a></li>
+	<li class="fragment fade-up" data-fragment-index="4">Rants at <a href="http://twitter.com/flurdy">@flurdy</a></li>
+</ul>
 
 
 Note:
@@ -99,28 +144,32 @@ Note:
 * write whilst learning
 
 					</script>
-				</section>
+					</section>
 
-				<section data-markdown>
-    				<script type="text/template">
+					<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    				<script type="text/template">
 
-### Scaling experience
+### Scaling Scala references
 
-- Startup from 50 to 200 employees
-- Public sector grew from 50 to 30+ scala teams
-- Non scala enterprise scaling
+- Startup from 50 to 200 employees  <!-- .element: class="fragment" -->
+- Public sector grew from 50 to 30+ scala only teams <!-- .element: class="fragment" -->
+- Enterprise scaling (non scala) <!-- .element: class="fragment" -->
 
 Note:
 
 - startup quadrupled in 1 year
 - about 20 scala developers
+
 - public sector About 200 scala developers
+
+- ie outsourcing
 - consultancy, telco &amp; finance) mostly by outsourcing internally
+
 
 					</script>
 				</section>
 
-				<section data-markdown>
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 ### Challenges
 
@@ -141,150 +190,420 @@ funding via VC or government budget, mandated to be used immediately
 					</script>
 				</section>
 
-				<section data-markdown>
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 ### Assumption
 
-* Agile/Lean/Scrum/Kanban
-* Continuous Integration
-* Integration testing
-* DVCS &amp; tools | Git, github , gitlab,  bitbucket
-* IAAS: AWS/GCE
-* Distributed logging 
+
+ Agile/Lean/etc, Continuous Integration, Devops, Integration testing,
+ DVCS &amp; tools, Clouds/IAAS, Distributed logging, etc
+
+Common sense <!-- .element: class="fragment" -->
 
 Note:
 
 - splunk, elestricsearch, logstash kibana
+- AWS/GCE
+- Git, github , gitlab,  bitbucket
 
 					</script>
 				</section>
 
-				<section>
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 ### Coding style
 
-* Company culture
+* Company culture / recruitment
 * Scala knowledge
 * Code for the next one
 * ROC: Readability, Optimisation, Correct
-* Startup
-* Public sector | KISS, continual new java converts.
 
 Note:
-- All about who will integrate it / fix it  tomorrow/next quarter
+
+- easy to read
+- easy to maintain
+- clever, challenging code,
+- java convert
+- Startup , Enterprise, Public sector,
+- who will extend/fix it later
+- tomorrow/next quarter
 - a lot of tech session  sharing knowledge to become more and more FP
+- KISS, continual new java converts.
 
 					</script>
 				</section>
 
-				<section>
+				<section data-markdown data-background="#009900" data-transition="zoom-in fade-out">
 	    			<script type="text/template">
 
 ### Framework
 
-* Standards / Convention
-* Startup | per team | Anything goes Play, Akka, Unfiltered, Fineagle
-* Public sector | Mostly Play
+- Standards / Convention
+- Best framework for the job per project (startup)
+- Same framework as others (public sector)
+- - New frameworks via pilot projects
 
 Note:
+
+- per team
+- self starter, high skill
+- Anything goes Play, Akka, Spray, Unfiltered, Fineagle, Spark
+- Spray and akka services,
+- play tools
+- node.js customer facing
+- Mostly Play
+- Dont stagnate
 
 					</script>
 				</section>
 
-				<section>
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
-# Libraries and versions | sbt-bobby, monorepo
+## Libraries and versions
 
-* Continous upgrades
-* No API set in stone forever
-* Monorepo  
-* Smooth evolution | Not force upgrades on every change
+JDK, Scala version, library, plugins, API
 
-* Unrealistic version deadlines across all teams
-* Perfect storm of version changes before "code freeze"
+Keeping up to date-ish across all projects
+
+Continuous smooth evolution
+- Don't stagnate any projects
+- No API set in stone forever
+- Roll forward
+
+Tools <!-- .element: class="fragment" -->
+- Monorepo <!-- .element: class="fragment" -->
+- SBT-Bobby <!-- .element: class="fragment" -->
 
 Note:
 
+- Common micro service framework dependencies
+- Puppet, Docker
+- takes a lot of time and energy when scaling
+- roll forward api support
+- Not force upgrades on every change
+- Google announce braking API as comments in API responses
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Monorepo
+
+- One source repository to rule them all
 - Instant version changes.
-- Atomic commits across multiple services 
-- Twitter, Google. 
-- Complicated delta builds. (pants, blaze)
+- Atomic commits across projects
+- Developer fog <!-- .element: class="fragment" data-fragment-index="1" -->
+- Complicated parallel delta builds  <!-- .element: class="fragment" data-fragment-index="1" -->
+
+Note:
+
+- Atomic commits across multiple services
+- Twitter, Google.
+- Pants, blaze
+- 1000 of commits per day
 
 					</script>
 				</section>
 
 				<section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 ### sbt-bobby
 
-* SBT plugin
-* Don't build artifacts without it
-* Grace period to upgrade | Dont abuse
+- SBT plugin: [github.com/hmrc/sbt-bobby](https://github.com/hmrc/sbt-bobby)
+- Set dependencies as outdated
+- - Blacklist versions
+- - Grace period to upgrade
+- Include as part of CI build (at least)
+- Unrealistic deadlines across all teams <!-- .element: class="fragment" data-fragment-index="1" -->
+- Perfect storm before "code freeze" <!-- .element: class="fragment" data-fragment-index="1" -->
+
+Note:
+
+- No artifacts without it
+- Dont abuse grace period
 
 					</script>
 				</section>
 
 
-				<section>
+				<section data-background="#007700" data-transition="zoom-in slide-out">
+
+					<h2>Install Bobby</h2>
+
+<code>~/.sbt/0.13/plugins/build.sbt</code>
+
+<pre><code data-trim data-noescape>
+resolvers += Resolver.url( "hmrc-sbt-plugin-releases",
+	url("https://dl.bintray.com/hmrc/sbt-plugin-releases")
+)(Resolver.ivyStylePatterns)
+
+addSbtPlugin("uk.gov.hmrc" % "sbt-bobby" % "<i>0.30.0</i>")
+</code></pre>
+
+<code>sbt validate</code>
+
+				</section>
+
+
+				<section data-background="#007700" data-transition="zoom-in slide-out">
+
+					<h2>Configure Bobby</h2>
+
+<code>~/.sbt/bobby.conf</code>
+
+<pre><code>deprecated-dependencies = https://some-url/bobby-deprecated.json
+deprecated-dependencies = file:///~/.sbt/bobby-deprecated.json
+</code></pre>
+
+<code class="fragment" data-fragment-index="1">~/.sbt/bobby-deprecated.json</code>
+
+<pre class="fragment" data-fragment-index="1"><code data-trim data-noescape>
+{
+  "libraries":[
+	 {
+	  "organisation": "com.example",
+	  "name": "mylibrary",
+	  "range": "(,6.0.0)",
+	  "reason": "Security vulnerability before v6",
+	  "from": "2016-06-23"
+	 }
+  ],
+  "plugins":[]
+}
+</code></pre>
+
+				</section>
+
+
+
+				<section data-background="#007700" data-transition="zoom-in slide-out">
+
+					<h2>Blacklist versions</h2>
+
+					<table>
+						<thead>
+							<tr>
+								<th>Range</th>
+								<th>Meaning</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>(,1.0.0]</td>
+								<td>Has to be newer than 1.0.0</td>
+							</tr>
+							<tr>
+								<td>[1.0.0]</td>
+								<td>Can't use v1.0.0</td>
+							</tr>
+							<tr>
+								<td>[1.2.0,1.3.0]</td>
+								<td>1.2.0 &lt;= x &lt;= 1.3.0</td>
+							</tr>
+							<tr>
+								<td>[1.0.0,2.0.0)</td>
+								<td>1.0.0 &lt;= x &lt; 2.0.0</td>
+							</tr>
+							<tr>
+								<td>[1.5.0,)</td>
+								<td>Has to be older than 1.5.0</td>
+							</tr>
+							<tr>
+								<td>[*-SNAPSHOT]</td>
+								<td>No SNAPSHOTs</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<aside class="notes">
+						- Note difference between [ and (
+					</aside>
+
+				</section>
+
+
+
+					<section data-background="#007700" data-transition="zoom-in slide-out">
+
+						<h2>Build fail</h2>
+
+						<img class="stretch" src="/images/bobby-fail.png"/>
+
+						<aside class="notes">
+
+						</aside>
+
+					</section>
+				</section>
+
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 ### Architecture &amp; pipeline
 
-* Simple
-* Uncoupled
-* Micro micro services
-* One team owner
-* Release all day long
+- Simple
+- Uncoupled
+- - Microservices
+- One team owner per service
+- Release all day long
 
 Note:
 
 - micro services
-- continual delivery
+- standardised base service framework and libraries
+- roll forward API
+- continuas delivery
+- spinaker etc
 
 					</script>
 				</section>
 
 
 				<section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Tools &amp; Automation
+
+Easy permissions <!-- .element: class="fragment" -->
+- Allow all (forgiveness) <!-- .element: class="fragment"  -->
+- Easy self service (permission) <!-- .element: class="fragment" -->
+
+Quick project bootstrap <!-- .element: class="fragment"  -->
+
+Clear delivery pipeline <!-- .element: class="fragment" -->
+
+One button / automate everything <!-- .element: class="fragment"  -->
+- Easy / automated / reproducible <!-- .element: class="fragment" -->
+
+
+Note:
+
+-bootstrap
+- - wiki script then automated
+- - Creates repo
+- - scaffold code,
+- - alerts and monitoring
+- - CI job
+- delivery
+- - thoughtworks go
+- - Jenkins 2.0
+- - Spinaker
+- - team city on steroids
+- Integrate all tools in chat
+- - CI, repos, deploy tools, monitoring in chat
+- - slack hipchat
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+##  One button
+
+- [blog.flurdy/../one-button-aim-nearly-there](http://blog.flurdy.com/2013/08/one-button-aim-nearly-there.html) <!-- .element: class="fragment" data-fragment-index="1" -->
+- Environment configuration in Git <!-- .element: class="fragment" data-fragment-index="2" -->
+- - Automatic configuration roll out (Puppet) <!-- .element: class="fragment" data-fragment-index="2" -->
+- CI abuse (Team City) <!-- .element: class="fragment" data-fragment-index="3" -->
+- - Too many tools <!-- .element: class="fragment" data-fragment-index="4" -->
+- - Automatic or one button to <!-- .element: class="fragment" data-fragment-index="5" -->
+- - - build, test, smoke&nbsp;test, perf&nbsp;test, deploy, promote, tag, rollback, redeploy, restart&nbsp;server, clean&nbsp;db, migrate&nbsp;db    <!-- .element: class="fragment" data-fragment-index="5" -->
+
+
+
+Note:
+
+- tools: deployinator, fabric, team city, puppet, scp,
+- Configuration in Prod sometimes had to be approved puppet
+- anti pattern
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 
-### Version control environment
-* * Puppet, Chef, Ansible, Docker
-* * jenkins-dsl
+### Version control everything
 
-* Version control configuration
+- Environments <!-- .element: class="fragment" data-fragment-index="1" -->
+- - Puppet, Chef, Ansible, Vagrant, Docker <!-- .element: class="fragment" data-fragment-index="1" -->
 
-					</script>
-				</section>
+- Build and deploy tools  <!-- .element: class="fragment" data-fragment-index="2" -->
+- - Jenkins DSL <!-- .element: class="fragment" data-fragment-index="2" -->
 
+Scalable &amp; reproducible <!-- .element: class="fragment" data-fragment-index="3" -->
 
-				<section>
-	    			<script type="text/template">
+And test it! <!-- .element: class="fragment" data-fragment-index="4" -->
 
-### Tooling
+Note:
 
-* Quick project bootstrap
-* Automated / easy delivery pipeline
-* Integrate CI, repos, deploy tools, monitoring in chat | Slack
-* | blog.flurdy/one
+- minimise 100 fat finger via UI screw things up accidentally
+- prefer other CI (team city)
+- but jenkins servers are then reproducible in an instant
 
 					</script>
 				</section>
 
-				<section>
+
+				<section data-background="#007700" data-transition="zoom-in slide-out">
+
+
+					<h2>Jenkins DSL</h2>
+
+					<ul>
+						<li><a href="https://github.com/jenkinsci/job-dsl-plugin">github.com/jenkinsci/job-dsl-plugin</a></li>
+						<li><a href="https://github.com/hmrc/jenkins-job-builders">github.com/hmrc/jenkins-job-builders</a></li>
+						<li><a href="https://github.com/hmrc/jenkins-jobs">github.com/hmrc/jenkins-jobs</a></li>
+					</ul>
+
+					<pre class="fragment"><code data-trim>
+import javaposse.jobdsl.dsl.DslFactory
+import uk.gov.hmrc.jenkinsjobs.domain.builder.SbtMicroserviceJobBuilder
+
+new SbtMicroserviceJobBuilder('myamazeballs-service').
+    withScalaStyle().
+    withSCoverage().
+   build(this as DslFactory)
+</code></pre>
+
+					<pre class="fragment"><code data-trim>./gradlew clean test</code></pre>
+
+					<span class="fragment">Seed job to activate</span>
+
+					<aside class="notes">
+						- Groovy not scala
+						- ready made builders for many purposes
+						- normal builds
+						- devops jobs
+						- wall displays
+					</aside>
+
+				</section>
+
+				</section>
+
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 ### Best practices
 
 * Internal blog of upcoming changes
 * Documented approach to integration, changes | PRs, new mandatory integrations
-* Q & A chat rooms for each team/service
-* Work/impact across teams & services => pair across
+* Q & amp;A chat rooms for each team/service
+* Work/impact across teams &amp; services => pair across
 * Upgrade or kill services
 * Don't be clever
 * Don't be stupid
@@ -295,15 +614,16 @@ Note:
 					</script>
 				</section>
 
-				<section>
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 ### Battle scars
 
-* PR flood
-* PR graveyard
-* Too many frameworks 
-* Ninjas and salarymen 
+* Pull Request flood
+* Pull Request graveyard
+* Perfect storm of versions
+* Too many frameworks
+* Ninjas and clones
 
 Note:
 - Too few frameworks
@@ -311,22 +631,39 @@ Note:
 					</script>
 				</section>
 
-				<section>
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
+
 ### More information
 
 - http://techtraits.com/microservice.html
-- blog.flurdy/one
+- http://blog.flurdy.com/2013/08/one-button-aim-nearly-there.html
+- https://github.com/jenkinsci/job-dsl-plugin
 
 					</script>
 				</section>
-				<section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 					</script>
 				</section>
-				<section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
+
+Note:
+
+
+one button description
+
+
+organisational
+self service all
+
+slack communication
+
+
 
 					</script>
 				</section>
