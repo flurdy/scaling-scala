@@ -1,0 +1,193 @@
+2016 flatmap: Scaling Scala slides
+
+
+Slide:
+
+Scaling Scala
+
+by Ivar Abrahamsen
+@flurdy
+
+May 2016.flatmap.no
+
+
+
+Slide:
+
+Who am I
+
+Ivar Abrahamsen
+* Norwegian but live in England | Hampshire with my english missus and our two little girls
+* Consultant at Eray by Flurdy eray.uk | Roles: Technical Architect, Tech Lead, etc
+* Rants at @flurdy & writes at flurdy.com | whilst learning
+
+
+Slide
+
+Scaling Scala experience
+* Startup from 50 to 200 employees | Flashy , silicon roundabout darling
+* Public sector from 5 teams to 30+ teams | ~200 scala developers
+* Scaling non scala from telco and finance
+
+
+Slide:
+
+Talk Context
+
+* Intro
+* Scaling Challenges | what do we actualy face
+* Assumed practices | common sense , on most projects
+* Coding style, frameworks | what works, worked for us, churn, outsourcing
+* Libraries and versions | sbt-bobby, monorepo
+* Architecture & pipeline| micro services, continual delivery
+* Tooling
+* Summary of best practices
+* Other people's battle wounds
+
+Not covering
+* Project management
+* Hiring | Location, startup, sector
+* Technology mandate apart from Scala | mention which we used and why, but not the answer
+
+
+Slide:
+
+Challenges
+
+
+* Mainstream
+* Massive funding | via VC or government budget , that is mandated to be used
+* Chaotic architecture
+* Onboarding
+* Rotation, staff turnover
+* Tech pivoting
+* Tech debt bankruptcy
+* Old school, new school, theory school,
+
+
+
+
+Slide
+
+Assumed practices  | common sense
+
+* Agile/Lean/Scrum/Kanban
+* Continuous Integration
+* Integration testing
+* DVCS & tools | Git, github , gitlab,  bitbucket
+* IAAS: AWS/GCE
+* Distributed logging | splunk, elestricsearch, logstash kibana
+
+* Best practices for scaling = best practices for non scaling
+
+
+Slide
+
+Coding style
+
+* Company culture
+* Scala knowledge
+* Code for the next one | All about who will integrate it / fix it  tomorrow/next quarter
+* ROC: Readability, Optimisation, Correct | With varied skills and lots of integration readability wins
+* Startup | a lot of tech session  sharing knowledge to become more and more FP
+* Public sector | KISS, continual new java converts.
+
+
+Framework
+
+* Standards / Convention
+* Startup | per team | Anything goes Play, Akka, Unfiltered, Fineagle
+* Public sector | Mostly Play
+
+
+
+
+Slide
+
+Libraries and versions | sbt-bobby, monorepo
+
+* Continous upgrades
+* No API set in stone forever
+* Monorepo  | Instant version changes. Twitter, Google. Complicated delta builds. (pants, blaze)
+* Smooth evolution | Not force upgrades on every change
+
+* Unrealistic version deadlines across all teams
+* Perfect storm of version changes before "code freeze"
+
+
+Slide
+
+sbt-bobby
+
+* SBT plugin
+* Don't build artifacts without it
+* Grace period to upgrade | Dont abuse
+
+
+Slide
+
+Architecture & pipeline| micro services, continual delivery
+
+* SImple
+* Uncoupled
+* Micro micro services
+* One team owner
+* Release all day long
+
+
+* Version control environment
+* * Puppet, Chef, Ansible, Docker
+* * jenkins-dsl
+
+* Version control configuration
+
+
+
+Slide
+
+Tooling
+
+* Quick project bootstrap
+* Automated / easy delivery pipeline
+* Integrate CI, repos, deploy tools, monitoring in chat | Slack
+* | blog.flurdy/one
+
+
+
+
+Slide
+
+Best practices
+
+* Internal blog of upcoming changes
+* Documented approach to integration, changes | PRs, new mandatory integrations
+* Q & A chat rooms for each team/service
+* Work/impact across teams & services => pair across
+* Upgrade or kill services
+* Don't be clever
+* Don't be stupid
+* Book clubs, snippet chats, hack days
+* Encourage tooling
+* Auto CI test all PRs and branches
+
+
+
+Slide
+
+Battle scars
+
+* PR flood
+* PR graveyard
+* Too many frameworks | Too little frameworks
+* Ninjas and salarymen |
+
+
+
+
+
+
+http://techtraits.com/microservice.html
+blog.flurdy/one
+
+
+
