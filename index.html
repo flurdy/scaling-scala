@@ -4,13 +4,23 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Scaling Scala by @flurdy</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style>
+			body:after {
+				content: url(/images/flurdy_warped_dual.png);
+				position: fixed;
+				top: 1.5em;
+				right: 0em;
+				transform: scale(.15);
+			}
+		</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -24,10 +34,313 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+
+
+				<section data-markdown data-background="#009900">
+    				<script type="text/template">
+## Scaling Scala
+
+not performance but scaling people
+
+by @flurdy
+
+Note:
+					</script>
+				</section>
+
+				<section data-markdown data-background="#009900">
+	    			<script type="text/template">
+
+### Talk context
+
+
+
+- Challenges
+- Coding Styles
+- Frameworks
+- Libraries &amp; versions
+- Architecture &amp; pipeline
+- Tooling
+- Best practices
+- Battle scars
+
+- Best practices for scaling = best practices for non scaling <!-- .element: class="fragment fade-up" data-fragment-index="2" -->
+
+Note:
+
+Keeping version up to date across the teams and projects is tricky
+
+Not covering: 
+- project management, 
+- Recruitment, 
+- Not mandating tech, just showing examples
+
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#009900">
+    				<script type="text/template">
+
+### Who am I
+
+* Ivar Abrahamsen
+* Norwegian. Live in England 
+* Writes flurdy.com  <!-- .element: class="fragment fade-up" data-fragment-index="2" -->
+* Rants at @flurdy <!-- .element: class="fragment fade-up" data-fragment-index="2" -->
+* Consultant at eray.uk, Eray by Flurdy <!-- .element: class="fragment fade-up" data-fragment-index="3" -->
+* Technical Architect, Tech Lead, Dev<!-- .element: class="fragment fade-up" data-fragment-index="3" -->
+
+
+Note:
+
+
+* Hampshire with my little girls
+* write whilst learning
+
+					</script>
+				</section>
+
+				<section data-markdown>
+    				<script type="text/template">
+
+### Scaling experience
+
+- Startup from 50 to 200 employees
+- Public sector grew from 50 to 30+ scala teams
+- Non scala enterprise scaling
+
+Note:
+
+- startup quadrupled in 1 year
+- about 20 scala developers
+- public sector About 200 scala developers
+- consultancy, telco &amp; finance) mostly by outsourcing internally
+
+					</script>
+				</section>
+
+				<section data-markdown>
+	    			<script type="text/template">
+### Challenges
+
+
+* Scala becoming mainstream
+* Massive funding expectations
+* Chaotic architecture
+* Onboarding
+* Staff turnover
+* Tech pivoting
+* Tech debt bankruptcy
+* Old school, new school, hipster school
+
+Note:
+
+funding via VC or government budget, mandated to be used immediately
+
+					</script>
+				</section>
+
+				<section data-markdown>
+	    			<script type="text/template">
+
+### Assumption
+
+* Agile/Lean/Scrum/Kanban
+* Continuous Integration
+* Integration testing
+* DVCS &amp; tools | Git, github , gitlab,  bitbucket
+* IAAS: AWS/GCE
+* Distributed logging 
+
+Note:
+
+- splunk, elestricsearch, logstash kibana
+
+					</script>
+				</section>
+
+				<section>
+	    			<script type="text/template">
+
+### Coding style
+
+* Company culture
+* Scala knowledge
+* Code for the next one
+* ROC: Readability, Optimisation, Correct
+* Startup
+* Public sector | KISS, continual new java converts.
+
+Note:
+- All about who will integrate it / fix it  tomorrow/next quarter
+- a lot of tech session  sharing knowledge to become more and more FP
+
+					</script>
+				</section>
+
+				<section>
+	    			<script type="text/template">
+
+### Framework
+
+* Standards / Convention
+* Startup | per team | Anything goes Play, Akka, Unfiltered, Fineagle
+* Public sector | Mostly Play
+
+Note:
+
+					</script>
+				</section>
+
+				<section>
+	    			<script type="text/template">
+
+# Libraries and versions | sbt-bobby, monorepo
+
+* Continous upgrades
+* No API set in stone forever
+* Monorepo  
+* Smooth evolution | Not force upgrades on every change
+
+* Unrealistic version deadlines across all teams
+* Perfect storm of version changes before "code freeze"
+
+Note:
+
+- Instant version changes.
+- Atomic commits across multiple services 
+- Twitter, Google. 
+- Complicated delta builds. (pants, blaze)
+
+					</script>
+				</section>
+
+				<section>
+	    			<script type="text/template">
+
+### sbt-bobby
+
+* SBT plugin
+* Don't build artifacts without it
+* Grace period to upgrade | Dont abuse
+
+					</script>
+				</section>
+
+
+				<section>
+	    			<script type="text/template">
+
+### Architecture &amp; pipeline
+
+* Simple
+* Uncoupled
+* Micro micro services
+* One team owner
+* Release all day long
+
+Note:
+
+- micro services
+- continual delivery
+
+					</script>
+				</section>
+
+
+				<section>
+	    			<script type="text/template">
+
+
+### Version control environment
+* * Puppet, Chef, Ansible, Docker
+* * jenkins-dsl
+
+* Version control configuration
+
+					</script>
+				</section>
+
+
+				<section>
+	    			<script type="text/template">
+
+### Tooling
+
+* Quick project bootstrap
+* Automated / easy delivery pipeline
+* Integrate CI, repos, deploy tools, monitoring in chat | Slack
+* | blog.flurdy/one
+
+					</script>
+				</section>
+
+				<section>
+	    			<script type="text/template">
+
+### Best practices
+
+* Internal blog of upcoming changes
+* Documented approach to integration, changes | PRs, new mandatory integrations
+* Q & A chat rooms for each team/service
+* Work/impact across teams & services => pair across
+* Upgrade or kill services
+* Don't be clever
+* Don't be stupid
+* Book clubs, snippet chats, hack days
+* Encourage tooling
+* Auto CI test all PRs and branches
+
+					</script>
+				</section>
+
+				<section>
+	    			<script type="text/template">
+
+### Battle scars
+
+* PR flood
+* PR graveyard
+* Too many frameworks 
+* Ninjas and salarymen 
+
+Note:
+- Too few frameworks
+
+					</script>
+				</section>
+
+				<section>
+	    			<script type="text/template">
+### More information
+
+- http://techtraits.com/microservice.html
+- blog.flurdy/one
+
+					</script>
+				</section>
+				<section>
+	    			<script type="text/template">
+
+					</script>
+				</section>
+				<section>
+	    			<script type="text/template">
+
+					</script>
+				</section>
+
+
 			</div>
 		</div>
+
+		<!-- div id="myLogo" style="background: url(https://flurdy.com/images/flurdy_warped_dual.png);
+                        position: absolute;
+                        bottom: 300px;
+                        right: 300px;
+                        width: 300px;
+                        height: 50px;"></div -->
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
@@ -36,13 +349,16 @@
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
-
+				controls: true,
+				progress: true,
+				slideNumber: false,
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+		        	{ src: 'plugin/notes/notes.js', async: true },
 				]
 			});
 		</script>
