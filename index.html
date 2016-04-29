@@ -80,11 +80,12 @@ Note:
 
 
 - Scaling challenges
+- Best practices
 - Coding styles &amp; frameworks
 - Versions
 - Architecture &amp; pipeline
 - Tooling &amp; automation
-- Best practices &amp; battle scars
+- Battle scars &amp; Q&amp;A
 
 Best practices for scaling = best practices for non scaling <!-- .element: class="fragment fade-up" data-fragment-index="2" -->
 
@@ -210,22 +211,38 @@ Note:
 					</script>
 				</section>
 
-
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 ### Best practices
 
-* Internal blog of upcoming changes
-* Documented approach to integration, changes | PRs, new mandatory integrations
-* Q&amp;A chat rooms for each team/service
-* Work/impact across teams &amp; services => pair across
-* Upgrade or kill services
-* Don't be clever
-* Don't be stupid
-* Book clubs, snippet chats, hack days
-* Encourage tooling
-* Auto CI test all PRs and branches
+- Keep all services up to date <!-- .element: class="fragment" data-fragment-index="1" -->
+- Cull faltering services <!-- .element: class="fragment" data-fragment-index="1" -->
+- Micro services are cattle not pets <!-- .element: class="fragment" data-fragment-index="1" -->
+- Technical communication <!-- .element: class="fragment" data-fragment-index="2" -->
+- Team and project information <!-- .element: class="fragment" data-fragment-index="2" -->
+- Automate it all <!-- .element: class="fragment" data-fragment-index="3" -->
+- No fat fingers <!-- .element: class="fragment" data-fragment-index="3" -->
+
+
+Note:
+
+Could be cut
+
+- tech coms across platform
+- blog of upcoming changes
+- wiki of pilot projects experience
+- mandatory / high risk
+- chat rooms
+- tech chats
+= Q&amp;A chat rooms for each team/service
+- Documented approach to integration, changes
+- PRs, new mandatory integrations
+- services escalation
+- weekly tech show case
+- book clubs etc
+
+
 
 					</script>
 				</section>
@@ -236,13 +253,34 @@ Note:
 
 ### Coding style
 
-* Company culture / recruitment
-* Scala knowledge
-* Code for the next one
-* ROC: Readability, Optimisation, Correct
+ROC: Readability, Optimisation, Correct <!-- .element: class="fragment" data-fragment-index="1" -->
+- Don't be clever <!-- .element: class="fragment" data-fragment-index="1" -->
+- Don't be stupid <!-- .element: class="fragment" data-fragment-index="1" -->
+
+Code for the next one <!-- .element: class="fragment" data-fragment-index="2" -->
+
+Company culture &amp; recruitment  <!-- .element: class="fragment" data-fragment-index="3" -->
+- Candidate pool  <!-- .element: class="fragment" data-fragment-index="4" -->
+- Staff turn over <!-- .element: class="fragment" data-fragment-index="4" -->
+- Outsource <!-- .element: class="fragment" data-fragment-index="4" -->
+
+Share and evolve coding style <!-- .element: class="fragment" data-fragment-index="5" -->
+- Pair <!-- .element: class="fragment" data-fragment-index="5" -->
+- Informal workshops <!-- .element: class="fragment" data-fragment-index="5" -->
+
 
 Note:
 
+Not going to mandate full FP or just imperative java without semi colon
+
+ROC: Chat with friend (Noel)
+
+This depends on:
+- company culture
+- compage/department size
+- startup, entrerprise,
+- big pool of candidates (SF,NY,London)
+- ability to find and recruit experience
 - easy to read
 - easy to maintain
 - clever, challenging code,
@@ -250,8 +288,8 @@ Note:
 - Startup , Enterprise, Public sector,
 - who will extend/fix it later
 - tomorrow/next quarter
+- dont be stupid, make it a bit better
 
-- a lot of tech session  sharing knowledge to become more and more FP
 
 
 					</script>
@@ -272,7 +310,8 @@ Note:
 Note:
 
 - per team
-- self starter, high skill
+- self starter
+- high skill
 - Anything goes Play, Akka, Spray, Unfiltered, Fineagle, Spark
 - standardised per team
 - Spray and akka services,
@@ -505,26 +544,130 @@ deprecated-dependencies = file:///~/.sbt/bobby-deprecated.json
 				</section>
 
 
+				<section>
+
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 ### Architecture &amp; pipeline
 
-- Simple
-- Uncoupled
-- - Microservices
-- One team owner per service
-- Release all day long
+- Simple <!-- .element: class="fragment" -->
+- Uncoupled <!-- .element: class="fragment" -->
+- Microservices <!-- .element: class="fragment" -->
+- Release all day long <!-- .element: class="fragment" -->
+
 
 Note:
 
 - micro services
 - standardised base service framework and libraries
 - roll forward API
+- pipeline covered more in next section
 - continuas delivery
 - spinaker etc
 
 					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Architecture &amp; pipeline
+#### Procedures
+
+- One team owner per service <!-- .element: class="fragment" -->
+- Internal technical communication <!-- .element: class="fragment" -->
+- Pull request across teams <!-- .element: class="fragment" -->
+
+Note:
+
+PR branches are build and CI tested
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Microservices
+
+- Split emerging monolithics <!-- .element: class="fragment" data-fragment-index="1" -->
+- Keep'em dumb <!-- .element: class="fragment" data-fragment-index="1" -->
+- Roll forward releases <!-- .element: class="fragment" data-fragment-index="1" -->
+- Integration test orchestration <!-- .element: class="fragment" data-fragment-index="2" -->
+- Stubs &amp; mocks <!-- .element: class="fragment"  data-fragment-index="2" -->
+- Tooling <!-- .element: class="fragment" data-fragment-index="3" -->
+
+
+Note:
+
+- Devide, split, evolve,
+- Rinse - repeat
+- tooling to create  scaffold project
+- giter8
+- including stubs
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Microservices Testing
+
+- Spin up all dependencies <!-- .element: class="fragment" -->
+- Real, mocks, stubs <!-- .element: class="fragment" -->
+- Including databases <!-- .element: class="fragment" -->
+- Snapshots <!-- .element: class="fragment" -->
+- Fast <!-- .element: class="fragment" -->
+
+Note:
+
+- including transatives dependencies
+- systems not library dependencies
+- wiremock, mockingbird
+- Configuration override
+- feature toggles
+- Override with local systems
+- Fast bit is hard
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Microservices Testing
+#### Service Manager
+
+Local microservices management <!-- .element: class="fragment"  adata-fragment-index="1" -->
+
+[github.com/hmrc/service-manager](https://github.com/hmrc/service-manager) <!-- .element: class="fragment"  adata-fragment-index="2" -->
+
+- Service catalog <!-- .element: class="fragment"  adata-fragment-index="3" -->
+- Profiles of services <!-- .element: class="fragment"  adata-fragment-index="3" -->
+- Configuration overrides <!-- .element: class="fragment"  adata-fragment-index="4" -->
+- Dynamic integration tests support <!-- .element: class="fragment"  adata-fragment-index="5" -->
+- Snapshot or source <!-- .element: class="fragment"  adata-fragment-index="6" -->
+- Lack dependency <!-- .element: class="fragment"  adata-fragment-index="7" -->
+- Not that fast  <!-- .element: class="fragment"  adata-fragment-index="8" -->
+
+Note:
+
+- far from perfect
+- principles still apply
+- not advocating using it
+- writen in python
+- Not docker
+- can spin up stubs where needed
+- swap individual services
+- configuration feature toggeles etc
+- Lack dependency : evolved profiles solves this
+- wiremock
+
+					</script>
+				</section>
+
 				</section>
 
 
@@ -535,17 +678,44 @@ Note:
 
 ### Tools &amp; Automation
 
-Easy permissions <!-- .element: class="fragment" -->
-- Allow all (forgiveness) <!-- .element: class="fragment"  -->
-- Easy self service (permission) <!-- .element: class="fragment" -->
+- Permissions
+- Bootstrap
+- Pipeline &amp; tools
 
-Quick project bootstrap <!-- .element: class="fragment"  -->
+Note:
 
-Clear delivery pipeline <!-- .element: class="fragment" -->
+- tools = general tooling, support tools, investigation
 
-One button / automate everything <!-- .element: class="fragment"  -->
-- Easy / automated / reproducible <!-- .element: class="fragment" -->
+					</script>
+				</section>
 
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Tools &amp; Automation
+#### Permissions
+
+- Everyone view
+- Easy write permissions
+- - Allow all (forgiveness)
+- - Easy self service (permission)
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Tools &amp; Automation
+#### Bootstrap
+
+- Steps on Wiki page
+- Automated scripts
+- Git repos
+- Source scaffold application
+- CI build jobs
+- Wiki space
+- Chat channels
 
 Note:
 
@@ -555,6 +725,24 @@ Note:
 - - scaffold code,
 - - alerts and monitoring
 - - CI job
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Tools &amp; Automation
+#### Pipeline &amp; tools
+
+Clear delivery pipeline <!-- .element: class="fragment" -->
+
+One button / automate everything <!-- .element: class="fragment"  -->
+- Easy / automated / reproducible <!-- .element: class="fragment" -->
+
+
+Note:
+
 - delivery
 - - thoughtworks go
 - - Jenkins 2.0
@@ -563,6 +751,7 @@ Note:
 - Integrate all tools in chat
 - - CI, repos, deploy tools, monitoring in chat
 - - slack hipchat
+- total time ie cost saver
 
 					</script>
 				</section>
@@ -570,23 +759,32 @@ Note:
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
-##  One button
+### Tools
+#### One button
 
-- [blog.flurdy/../one-button-aim-nearly-there](http://blog.flurdy.com/2013/08/one-button-aim-nearly-there.html) <!-- .element: class="fragment" data-fragment-index="1" -->
-- Environment configuration in Git <!-- .element: class="fragment" data-fragment-index="2" -->
-- - Automatic configuration roll out (Puppet) <!-- .element: class="fragment" data-fragment-index="2" -->
-- CI abuse (Team City) <!-- .element: class="fragment" data-fragment-index="3" -->
-- - Too many tools <!-- .element: class="fragment" data-fragment-index="4" -->
-- - Automatic or one button to <!-- .element: class="fragment" data-fragment-index="5" -->
-- - - build, test, smoke&nbsp;test, perf&nbsp;test, deploy, promote, tag, rollback, redeploy, restart&nbsp;server, clean&nbsp;db, migrate&nbsp;db    <!-- .element: class="fragment" data-fragment-index="5" -->
+[blog.flurdy/../one-button-aim-nearly-there](http://blog.flurdy.com/2013/08/one-button-aim-nearly-there.html) <!-- .element: class="fragment" data-fragment-index="1" -->
+
+Environment configuration in Git <!-- .element: class="fragment" data-fragment-index="2" -->
+- Automatic roll out (Puppet) <!-- .element: class="fragment" data-fragment-index="2" -->
+
+CI abuse (Team City) <!-- .element: class="fragment" data-fragment-index="3" -->
+- Too many tools <!-- .element: class="fragment" data-fragment-index="4" -->
+- Automatic or one button to everything <!-- .element: class="fragment" data-fragment-index="5" -->
+
 
 
 
 Note:
 
-- tools: deployinator, fabric, team city, puppet, scp,
-- Configuration in Prod sometimes had to be approved puppet
+- tools: cli, deployinator, fabric, team city, puppet, scp, sbt, maven,
+- Configuration in Prod sometimes had to be run by ops
+- Puppet every 15 minutes
 - ci abuse = anti pattern
+- build, test, deploy, smoke&nbsp;test, perf&nbsp;test, promote, tag, release, rollback, redeploy, restart&nbsp;server, clean&nbsp;db, seed&nbsp;db, migrate&nbsp;db
+
+- emphasise not the abuse
+- no fat fingers
+- no searching for tool
 
 					</script>
 				</section>
@@ -646,6 +844,7 @@ new SbtMicroserviceJobBuilder('myamazeballs-service').
 
 					<aside class="notes">
 						- Groovy not scala
+						- Initially created at a Javaposse roundup
 						- ready made builders for many purposes
 						- normal builds
 						- devops jobs
@@ -662,14 +861,28 @@ new SbtMicroserviceJobBuilder('myamazeballs-service').
 
 ### Battle scars
 
-* Pull Request flood
-* Pull Request graveyard
-* Perfect storm of versions
-* Too many frameworks
-* Ninjas and clones
+* Not roll forward dependencies <!-- .element: class="fragment"  -->
+* Environment bottle necks <!-- .element: class="fragment" adata-fragment-index="2" -->
+* No feature flag bottle necks <!-- .element: class="fragment" adata-fragment-index="2" -->
+* Pull Request flood <!-- .element: class="fragment" adata-fragment-index="3" -->
+* Pull Request graveyard <!-- .element: class="fragment" adata-fragment-index="4" -->
+* Perfect storm of versions <!-- .element: class="fragment" daata-fragment-index="4" -->
+* Too many frameworks <!-- .element: class="fragment" adata-fragment-index="5" -->
+* Too many tools <!-- .element: class="fragment" adata-fragment-index="5" -->
+
+
+### Q&amp;A <!-- .element: class="fragment" adata-fragment-index="7" -->
+
 
 Note:
-- Too few frameworks
+
+Might too generic
+
+- no flags no parallel work
+- Frameworks not fit for purpose
+- Crap tools
+- ninjas that go too often off the reservation
+- clones that dont try to improve, dont spot mistakes
 
 					</script>
 				</section>
@@ -679,40 +892,34 @@ Note:
 
 ### More information
 
+- http://flurdy.github.io/scaling-scala/
 - http://techtraits.com/microservice.html
 - http://blog.flurdy.com/2013/08/one-button-aim-nearly-there.html
 - https://github.com/jenkinsci/job-dsl-plugin
+- https://github.com/hmrc/service-manager
+- http://www.spinnaker.io/
+- https://jenkins.io/2.0/
+- https://github.com/hmrc/sbt-bobby
+
 
 					</script>
 				</section>
 
-				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
-	    			<script type="text/template">
-
-					</script>
-				</section>
+<!--
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 Note:
 
-
-
-slack communication
-
 outsourced
 not in control of skill
 
 more pr process
 
-service manager
-
-
-
 					</script>
 				</section>
-
+-->
 
 			</div>
 		</div>
