@@ -75,27 +75,44 @@ Note:
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
-## Talk context
+## Scaling Scala
 
 
+not performance but scaling people
 
 - Scaling challenges
 - Best practices
-- Coding styles &amp; frameworks
+- Architecture
+- Coding style &amp; frameworks
 - Versions
-- Architecture &amp; pipeline
-- Tooling &amp; automation
+- Pipeline, tooling &amp; automation
 - Battle scars &amp; Q&amp;A
 
 Best practices for scaling = best practices for non scaling <!-- .element: class="fragment fade-up" data-fragment-index="2" -->
 
+
 Note:
 
-Preaching to the converted
 
-Or worse/better already doing better things
+- Preaching to the converted
+- Or worse/better already doing better things
 
-Keeping version up to date across the teams and projects is tricky
+- scaling a company or department
+- lots of funding to scale massively
+- maybe startup or big budget allocation
+
+- best practices
+- pitfalls
+- battle scars
+
+- Versions and upgrading tricky but essential
+- will show a tool sbt-bobby we have been using
+
+- Architecture
+- describe micro service management tool
+
+- Tools
+- describe some previous automation
 
 Not covering:
 - project management,
@@ -132,8 +149,15 @@ Not covering:
 Note:
 
 - Technical Architect, Tech Lead, Dev
+- manchester uni
+- startups in manchester
+- oslo consultancy, banks and telcos
+- too icy
+- hants only snowed last week
+- startup in london and consultant since
 - Hampshire with my little girls
 - write whilst learning
+
 
 					</script>
 					</section>
@@ -145,12 +169,14 @@ Note:
 
 - Startup from 50 to 200 employees  <!-- .element: class="fragment" -->
 - Public sector grew from 5 to 50+ scala only teams <!-- .element: class="fragment" -->
-- Enterprise scaling (non scala) <!-- .element: class="fragment" -->
+- Enterprise scaling (non scala, outsource) <!-- .element: class="fragment" -->
 
 Note:
 
 - startup quadrupled in 1 year
 - about 20 scala developers
+
+- very different scaling experience
 
 - public sector over 200 scala developers
 
@@ -165,26 +191,50 @@ Note:
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
-### Challenges
+
+### Scaling Challenges
 
 
-* Scala becoming mainstream
-* Massive funding expectations
-* Chaotic architecture
-* Onboarding
-* Staff turnover
-* Tech pivoting
-* Tech debt bankruptcy
-* Old school, new school, hipster school
+- Massive funding expectations <!-- .element: class="fragment" -->
+- Recruitment, staff turnover, onboarding <!-- .element: class="fragment" -->
+- Parallel projects bottle necks <!-- .element: class="fragment" -->
+- Delivery pipeline bottle necks <!-- .element: class="fragment" -->
+- Testing consistency <!-- .element: class="fragment" -->
+- Code &amp; framework conventions &amp; proliferation <!-- .element: class="fragment" -->
+- Evolving ecosystem &amp; keeping abreast <!-- .element: class="fragment" -->
+- Forsaken projects  <!-- .element: class="fragment" -->
+- Tech debt bankruptcy <!-- .element: class="fragment" -->
+
+
 
 Note:
 
 dont forget scaling references slide
 
-funding via VC or government budget, mandated to be used immediately
 
+- funding via VC or government budget, mandated to be used immediately
+- parallel work
 
-TODO!
+- recruitment
+- talent pool
+- metioned later - affects code
+- scala mainstream means others are also scaling
+- turnover
+- more in hotbeds
+- 2 years in london is a long time
+- onboarding
+- done right brings people up to speed quickly
+- done wrong makes people leave
+
+- Chaotic rushed lava lamp architecture
+- Tech pivoting
+- Tech debt bankruptcy
+- Old school, new school, hipster school
+
+- tech pivot
+- spring, ddd, actor
+
+- abreast so can recruit
 
 
 					</script>
@@ -231,11 +281,11 @@ Could be cut
 
 - tech coms across platform
 - blog of upcoming changes
-- wiki of pilot projects experience
-- mandatory / high risk
+- pilot projects experience
+- announce mandatory / high risk changes
 - chat rooms
 - tech chats
-= Q&amp;A chat rooms for each team/service
+- Q&amp;A chat rooms for each team/service
 - Documented approach to integration, changes
 - PRs, new mandatory integrations
 - services escalation
@@ -248,23 +298,185 @@ Could be cut
 				</section>
 
 
+
+
+				<section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Architecture
+
+- Simple <!-- .element: class="fragment" -->
+- Uncoupled <!-- .element: class="fragment" -->
+- Microservices <!-- .element: class="fragment" -->
+- Release all day long <!-- .element: class="fragment" -->
+
+
+
+Note:
+
+- micro services begin life as monoliths
+- standardised base service framework and libraries
+- roll forward API
+- pipeline covered more in next section
+- continuas delivery
+- spinaker etc
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Architecture &amp; pipeline
+#### Procedures
+
+- One team owner per service <!-- .element: class="fragment" -->
+- Internal technical communication <!-- .element: class="fragment" -->
+- Pull request across teams <!-- .element: class="fragment" -->
+- Cross team pairing  <!-- .element: class="fragment" -->
+
+Note:
+
+PR branches are build and CI tested
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Microservices
+
+- Split emerging monolithics <!-- .element: class="fragment" data-fragment-index="1" -->
+- Evolve by divide &amp; conquer <!-- .element: class="fragment" data-fragment-index="1" -->
+- Keep'em dumb <!-- .element: class="fragment" data-fragment-index="1" -->
+- Rewrite by StranglerApplication <!-- .element: class="fragment" data-fragment-index="2" -->
+- Roll forward releases <!-- .element: class="fragment" data-fragment-index="2" -->
+- Integration test orchestration <!-- .element: class="fragment" data-fragment-index="3" -->
+- Stubs &amp; mocks <!-- .element: class="fragment"  data-fragment-index="3" -->
+- Tooling <!-- .element: class="fragment" data-fragment-index="4" -->
+
+
+Note:
+
+- Devide, split, evolve,
+- divide &amp; conquer = more teams/people
+- Rinse - repeat
+- tooling to create  scaffold project
+- giter8
+- including stubs
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Microservices Testing
+
+- Spin up all dependencies <!-- .element: class="fragment" -->
+- Real, mocks, stubs <!-- .element: class="fragment" -->
+- Including databases <!-- .element: class="fragment" -->
+- Snapshots <!-- .element: class="fragment" -->
+- Fast <!-- .element: class="fragment" -->
+
+Note:
+
+- including transitive dependencies
+- systems not library dependencies
+- wiremock, mockingbird
+- Configuration override
+- feature toggles
+- Override with local systems
+- Fast bit is hard
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Microservices Testing
+#### Service Manager
+
+Local microservices management <!-- .element: class="fragment"  adata-fragment-index="1" -->
+
+[github.com/hmrc/service-manager](https://github.com/hmrc/service-manager) <!-- .element: class="fragment"  adata-fragment-index="2" -->
+
+- Service catalog <!-- .element: class="fragment"  adata-fragment-index="3" -->
+- Profiles of services <!-- .element: class="fragment"  adata-fragment-index="3" -->
+- Configuration overrides <!-- .element: class="fragment"  adata-fragment-index="4" -->
+- Dynamic integration tests support <!-- .element: class="fragment"  adata-fragment-index="5" -->
+- Snapshot or source <!-- .element: class="fragment"  adata-fragment-index="6" -->
+- Lack dependency <!-- .element: class="fragment"  adata-fragment-index="7" -->
+- Not that fast  <!-- .element: class="fragment"  adata-fragment-index="8" -->
+
+Note:
+
+- far from perfect
+- principles still apply
+- not advocating using it
+- writen in python
+- Not docker
+- can spin up stubs where needed
+- swap individual services
+- configuration feature toggeles etc
+- Lack dependency : evolved profiles solves this
+- wiremock
+
+					</script>
+				</section>
+
+				</section>
+
+
+
+				<section>
+
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
 ### Coding style
 
+Company culture &amp; recruitment  <!-- .element: class="fragment" adata-fragment-index="3" -->
+- Ultra selective  <!-- .element: class="fragment" adata-fragment-index="4" -->
+- Volume selective  <!-- .element: class="fragment" adata-fragment-index="4" -->
+- Candidate pool  <!-- .element: class="fragment" adata-fragment-index="4" -->
+- Staff turn over <!-- .element: class="fragment" adata-fragment-index="4" -->
+- Outsource <!-- .element: class="fragment" aata-fragment-index="4" -->
+
+
+Note:
+
+
+This depends on:
+- company culture
+- compage/department size
+- startup, entrerprise,
+- big pool of candidates (SF,NY,London)
+- ability to find and recruit experience
+- Startup , Enterprise, Public sector,
+
+
+					</script>
+				</section>
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Coding style
+
+
 ROC: Readability, Optimisation, Correct <!-- .element: class="fragment" data-fragment-index="1" -->
-- Don't be clever <!-- .element: class="fragment" data-fragment-index="1" -->
-- Don't be stupid <!-- .element: class="fragment" data-fragment-index="1" -->
+- Don't be clever <!-- .element: class="fragment" data-fragment-index="2" -->
+- Don't be stupid <!-- .element: class="fragment" data-fragment-index="2" -->
 
-Code for the next one <!-- .element: class="fragment" data-fragment-index="2" -->
+Code for the next one <!-- .element: class="fragment" data-fragment-index="3" -->
 
-Company culture &amp; recruitment  <!-- .element: class="fragment" data-fragment-index="3" -->
-- Candidate pool  <!-- .element: class="fragment" data-fragment-index="4" -->
-- Staff turn over <!-- .element: class="fragment" data-fragment-index="4" -->
-- Outsource <!-- .element: class="fragment" data-fragment-index="4" -->
 
-Share and evolve coding style <!-- .element: class="fragment" data-fragment-index="5" -->
+Share and evolve coding style <!-- .element: class="fragment" data-fragment-index="4" -->
 - Pair <!-- .element: class="fragment" data-fragment-index="5" -->
 - Informal workshops <!-- .element: class="fragment" data-fragment-index="5" -->
 
@@ -276,23 +488,20 @@ Not going to mandate full FP or just imperative java without semi colon
 ROC: Chat with friend (Noel)
 
 This depends on:
-- company culture
-- compage/department size
-- startup, entrerprise,
-- big pool of candidates (SF,NY,London)
-- ability to find and recruit experience
 - easy to read
 - easy to maintain
 - clever, challenging code,
 - KISS, continual new java converts.
-- Startup , Enterprise, Public sector,
 - who will extend/fix it later
 - tomorrow/next quarter
 - dont be stupid, make it a bit better
+- pair two way learning
 
 
 
 					</script>
+				</section>
+
 				</section>
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in fade-out">
@@ -543,132 +752,6 @@ deprecated-dependencies = file:///~/.sbt/bobby-deprecated.json
 					</section>
 				</section>
 
-
-				<section>
-
-				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
-	    			<script type="text/template">
-
-### Architecture &amp; pipeline
-
-- Simple <!-- .element: class="fragment" -->
-- Uncoupled <!-- .element: class="fragment" -->
-- Microservices <!-- .element: class="fragment" -->
-- Release all day long <!-- .element: class="fragment" -->
-
-
-Note:
-
-- micro services
-- standardised base service framework and libraries
-- roll forward API
-- pipeline covered more in next section
-- continuas delivery
-- spinaker etc
-
-					</script>
-				</section>
-
-				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
-	    			<script type="text/template">
-
-### Architecture &amp; pipeline
-#### Procedures
-
-- One team owner per service <!-- .element: class="fragment" -->
-- Internal technical communication <!-- .element: class="fragment" -->
-- Pull request across teams <!-- .element: class="fragment" -->
-
-Note:
-
-PR branches are build and CI tested
-
-					</script>
-				</section>
-
-				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
-	    			<script type="text/template">
-
-### Microservices
-
-- Split emerging monolithics <!-- .element: class="fragment" data-fragment-index="1" -->
-- Keep'em dumb <!-- .element: class="fragment" data-fragment-index="1" -->
-- Roll forward releases <!-- .element: class="fragment" data-fragment-index="1" -->
-- Integration test orchestration <!-- .element: class="fragment" data-fragment-index="2" -->
-- Stubs &amp; mocks <!-- .element: class="fragment"  data-fragment-index="2" -->
-- Tooling <!-- .element: class="fragment" data-fragment-index="3" -->
-
-
-Note:
-
-- Devide, split, evolve,
-- Rinse - repeat
-- tooling to create  scaffold project
-- giter8
-- including stubs
-
-					</script>
-				</section>
-
-				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
-	    			<script type="text/template">
-
-### Microservices Testing
-
-- Spin up all dependencies <!-- .element: class="fragment" -->
-- Real, mocks, stubs <!-- .element: class="fragment" -->
-- Including databases <!-- .element: class="fragment" -->
-- Snapshots <!-- .element: class="fragment" -->
-- Fast <!-- .element: class="fragment" -->
-
-Note:
-
-- including transatives dependencies
-- systems not library dependencies
-- wiremock, mockingbird
-- Configuration override
-- feature toggles
-- Override with local systems
-- Fast bit is hard
-
-					</script>
-				</section>
-
-				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
-	    			<script type="text/template">
-
-### Microservices Testing
-#### Service Manager
-
-Local microservices management <!-- .element: class="fragment"  adata-fragment-index="1" -->
-
-[github.com/hmrc/service-manager](https://github.com/hmrc/service-manager) <!-- .element: class="fragment"  adata-fragment-index="2" -->
-
-- Service catalog <!-- .element: class="fragment"  adata-fragment-index="3" -->
-- Profiles of services <!-- .element: class="fragment"  adata-fragment-index="3" -->
-- Configuration overrides <!-- .element: class="fragment"  adata-fragment-index="4" -->
-- Dynamic integration tests support <!-- .element: class="fragment"  adata-fragment-index="5" -->
-- Snapshot or source <!-- .element: class="fragment"  adata-fragment-index="6" -->
-- Lack dependency <!-- .element: class="fragment"  adata-fragment-index="7" -->
-- Not that fast  <!-- .element: class="fragment"  adata-fragment-index="8" -->
-
-Note:
-
-- far from perfect
-- principles still apply
-- not advocating using it
-- writen in python
-- Not docker
-- can spin up stubs where needed
-- swap individual services
-- configuration feature toggeles etc
-- Lack dependency : evolved profiles solves this
-- wiremock
-
-					</script>
-				</section>
-
-				</section>
 
 
 				<section>
