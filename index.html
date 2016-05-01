@@ -84,15 +84,15 @@ scale well
 
 not performance but scaling people
 
-- Scaling challenges 
+- Scaling challenges
 - Best practices
-- Architecture 
+- Architecture
 - Coding style &amp; frameworks
 - Versions
 - Pipeline, tooling &amp; automation
 - Battle scars &amp; Q&amp;A
 
-Best practices for scaling = best practices for non scaling <!-- .element: class="fragment fade-up" data-fragment-index="2" -->
+Best practices for scaling = best practices for non scaling <!-- .element: class="fragment fade-up" -->
 
 
 Note:
@@ -126,7 +126,6 @@ Not covering:
 					</script>
 				</section>
 
-				<section>
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
     				<script type="text/template">
@@ -145,7 +144,7 @@ Not covering:
 	<li class="fragment fade-up" data-fragment-index="1">Ivar Abrahamsen</li>
 	<li class="fragment fade-up" data-fragment-index="1">Norwegian. Live in England</li>
 	<li class="fragment fade-up" data-fragment-index="2">Consultant at [Eray by Flurdy](https://eray.uk)</li>
-	<li class="fragment fade-up" data-fragment-index="2">Writes at <a href="https://flurdy.com/docs">flurdy.com</a></li>
+	<li class="fragment fade-up" data-fragment-index="2">Writes whilst learning at <a href="https://flurdy.com/docs">flurdy.com</a></li>
 	<li class="fragment fade-up" data-fragment-index="2">Rants at <a href="http://twitter.com/flurdy">@flurdy</a></li>
 </ul>
 
@@ -154,6 +153,7 @@ Note:
 
 2 mins
 
+- not the pigs
 - Technical Architect, Tech Lead, Dev
 - manchester uni
 - startups in manchester
@@ -173,7 +173,7 @@ Note:
 
 ### Scaling Scala references
 
-- Startup from 50 to 200 employees  <!-- .element: class="fragment" -->
+- Startup from 50 to 200 employees in 1 year <!-- .element: class="fragment" -->
 - Public sector grew from 5 to 50+ scala only teams <!-- .element: class="fragment" -->
 - Enterprise scaling (non scala, outsource) <!-- .element: class="fragment" -->
 
@@ -193,7 +193,6 @@ Note:
 					</script>
 				</section>
 
-				</section>
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
@@ -208,7 +207,6 @@ Note:
 - Testing consistency <!-- .element: class="fragment" -->
 - Code &amp; framework conventions &amp; proliferation <!-- .element: class="fragment" -->
 - Evolving ecosystem &amp; keeping abreast <!-- .element: class="fragment" -->
-- Forsaken projects  <!-- .element: class="fragment" -->
 - Tech debt bankruptcy <!-- .element: class="fragment" -->
 
 
@@ -243,6 +241,7 @@ dont forget scaling references slide
 - spring, ddd, actor
 
 - abreast so can recruit
+- Forsaken projects 
 
 
 					</script>
@@ -295,6 +294,7 @@ Note:
 - tech chats
 - Q&amp;A chat rooms for each team/service
 
+- service catalog
 - Documented approach to integration, changes
 - PRs, new mandatory integrations
 - services escalation
@@ -313,9 +313,6 @@ SKIPPABLE
 				</section>
 
 
-
-
-				<section>
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
@@ -338,7 +335,6 @@ Note:
 - roll forward API
 - pipeline covered more in next section
 - continuas delivery
-- spinaker etc
 
 					</script>
 				</section>
@@ -358,7 +354,7 @@ Note:
 
 - Wiki on PR, backlog, planning
 - PR branches are CI tested
-- github enterprise, travis
+- github enterprise, travis, contribution.md
 
 					</script>
 				</section>
@@ -368,14 +364,11 @@ Note:
 
 ### Microservices
 
-- Split emerging monolithics <!-- .element: class="fragment" data-fragment-index="1" -->
-- Evolve by divide &amp; conquer <!-- .element: class="fragment" data-fragment-index="1" -->
-- Keep'em dumb <!-- .element: class="fragment" data-fragment-index="1" -->
-- No big rewrite <!-- .element: class="fragment" data-fragment-index="2" -->
-- Rewrite by StranglerApplication <!-- .element: class="fragment" data-fragment-index="2" -->
-- Roll forward releases <!-- .element: class="fragment" data-fragment-index="2" -->
-- Integration test orchestration <!-- .element: class="fragment" data-fragment-index="3" -->
-- Tooling <!-- .element: class="fragment" data-fragment-index="4" -->
+- Evolve by divide &amp; conquer emerging monolithics <!-- .element: class="fragment"  -->
+- Keep'em dumb <!-- .element: class="fragment" daata-fragment-index="1" -->
+- Roll forward releases <!-- .element: class="fragment" daata-fragment-index="2" -->
+- Tooling <!-- .element: class="fragment" daata-fragment-index="4" -->
+- Local management &amp; orchestration <!-- .element: class="fragment" daata-fragment-index="3" -->
 
 
 Note:
@@ -386,9 +379,8 @@ Note:
 - Devide, split, evolve,
 - divide &amp; conquer = more teams/people
 - Rinse - repeat
-- tooling to create  scaffold project
-- giter8
-- including stubs
+- No big rewrite 
+- Rewrite by StranglerApplication
 
 					</script>
 				</section>
@@ -399,8 +391,8 @@ Note:
 ### Microservices Testing
 
 - Spin up all dependencies <!-- .element: class="fragment" -->
-- Real, mocks, stubs <!-- .element: class="fragment" -->
 - Including databases <!-- .element: class="fragment" -->
+- Real, mocks, stubs <!-- .element: class="fragment" -->
 - Releases, Snapshots, Source <!-- .element: class="fragment" -->
 - Fast <!-- .element: class="fragment" -->
 
@@ -430,12 +422,8 @@ Local microservices management <!-- .element: class="fragment"  adata-fragment-i
 - Service catalog <!-- .element: class="fragment"  adata-fragment-index="3" -->
 - Profiles (stacks) of services <!-- .element: class="fragment"  adata-fragment-index="3" -->
 - Configuration overrides <!-- .element: class="fragment"  adata-fragment-index="4" -->
-- Dynamic integration tests support <!-- .element: class="fragment"  adata-fragment-index="5" -->
-- Snapshot or source <!-- .element: class="fragment"  adata-fragment-index="6" -->
-- Problems: <!-- .element: class="fragment"  adata-fragment-index="7" -->
-- Lack service dependency <!-- .element: class="fragment"  adata-fragment-index="7" -->
-- Not that fast  <!-- .element: class="fragment"  adata-fragment-index="8" -->
-- Download the world  <!-- .element: class="fragment"  adata-fragment-index="8" -->
+- Automatic dynamic integration tests <!-- .element: class="fragment"  adata-fragment-index="5" -->
+- Snapshot binary or source <!-- .element: class="fragment"  adata-fragment-index="6" -->
 
 Note:
 
@@ -449,17 +437,37 @@ Note:
 - profiles: spin up stacks
 - swap individual services
 - configuration feature toggeles etc
+
+					</script>
+				</section>
+
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+### Microservices Testing
+#### Service Manager Problems
+
+
+- Lack service dependency <!-- .element: class="fragment"  -->
+- Download the world  <!-- .element: class="fragment"  -->
+- No containers  <!-- .element: class="fragment"  -->
+- Not that fast  <!-- .element: class="fragment"  -->
+
+Note:
+
+- far from perfect
+- principles still apply
+- not advocating using it
+- writen in python
+- Not docker
+
 - Lack dependency : evolved profiles solves this
 - wiremock
 
 					</script>
 				</section>
 
-				</section>
-
-
-
-				<section>
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
@@ -498,8 +506,8 @@ This depends on:
 ### Coding style
 
 ROC: Readable, Optimised, Correct <!-- .element: class="fragment" data-fragment-index="1" -->
-- Don't be clever <!-- .element: class="fragment" data-fragment-index="2" -->
-- Don't be stupid <!-- .element: class="fragment" data-fragment-index="2" -->
+- Don't be too clever <!-- .element: class="fragment" data-fragment-index="2" -->
+- Don't be 	stupid <!-- .element: class="fragment" data-fragment-index="2" -->
 
 Code for the next one <!-- .element: class="fragment" data-fragment-index="3" -->
 
@@ -535,7 +543,6 @@ This depends on:-
 					</script>
 				</section>
 
-				</section>
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in fade-out">
 	    			<script type="text/template">
@@ -567,7 +574,6 @@ Note:
 					</script>
 				</section>
 
-				<section>
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
@@ -580,7 +586,7 @@ Up to date across all projects &amp; services
 
 - Continuous smooth evolution <!-- .element: class="fragment" data-fragment-index="1"  -->
 - Roll forward <!-- .element: class="fragment" data-fragment-index="1" -->
-- Depreacte &amp; remove API <!-- .element: class="fragment" data-fragment-index="1" -->
+- Deprecate &amp; remove API <!-- .element: class="fragment" data-fragment-index="1" -->
 - Don't stagnate any projects <!-- .element: class="fragment" data-fragment-index="1" -->
 
 Note:
@@ -619,9 +625,10 @@ Note:
 ### Monorepo
 
 - One source repository to rule them all <!-- .element: class="fragment" data-fragment-index="1" -->
-- Instant version changes. <!-- .element: class="fragment" data-fragment-index="1" -->
+- Instant version changes <!-- .element: class="fragment" data-fragment-index="1" -->
 - Atomic commits across projects <!-- .element: class="fragment" data-fragment-index="1" -->
-- Problems: <!-- .element: class="fragment" data-fragment-index="2" -->
+
+Problems: <!-- .element: class="fragment" data-fragment-index="2" -->
 - Developer fog / bankruptcy <!-- .element: class="fragment" data-fragment-index="2" -->
 - Complicated parallel delta builds  <!-- .element: class="fragment" data-fragment-index="2" -->
 
@@ -629,6 +636,8 @@ Note:
 
 - Atomic commits across multiple services
 - Twitter, Google.
+- scaladays
+- heroku
 - Pants, blaze
 - 1000 of commits per day
 - smaller monorepo,
@@ -639,9 +648,6 @@ SKIPPABLE
 					</script>
 				</section>
 
-				</section>
-
-				<section>
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
@@ -650,7 +656,7 @@ SKIPPABLE
 
 - Sbt plugin: [github.com/hmrc/sbt-bobby](https://github.com/hmrc/sbt-bobby)
 - Keeps versions up to date across all sbt projects <!-- .element: class="fragment" data-fragment-index="1" -->
-- Set dependencies' versions as outdated <!-- .element: class="fragment" data-fragment-index="1" -->
+- Set library versions as outdated <!-- .element: class="fragment" data-fragment-index="1" -->
 - Fail builds  <!-- .element: class="fragment" data-fragment-index="2" -->
 - Grace period to upgrade <!-- .element: class="fragment" data-fragment-index="3" -->
 - Build output warning <!-- .element: class="fragment" data-fragment-index="3" -->
@@ -808,11 +814,8 @@ deprecated-dependencies = file:///~/.sbt/bobby-deprecated.json
 						</aside>
 
 					</section>
-				</section>
 
 
-
-				<section>
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
@@ -881,6 +884,7 @@ SKIPPABLE
 					</script>
 				</section>
 
+
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
@@ -893,7 +897,7 @@ Delivery pipeline <!-- .element: class="fragment" data-fragment-index="1" -->
 - No bottle necks <!-- .element: class="fragment" data-fragment-index="1" -->
 
 One button / automate everything <!-- .element: class="fragment"  data-fragment-index="2" -->
-- Quick/ Easy / automated / reproducible / no risk <!-- .element: class="fragment" data-fragment-index="2" -->
+- Quick / easy / automated / reproducible / reduce risk <!-- .element: class="fragment" data-fragment-index="2" -->
 
 
 Note:
@@ -913,6 +917,40 @@ SKIPPABLE
 					</script>
 				</section>
 
+
+
+				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
+	    			<script type="text/template">
+
+
+### Version control everything
+
+- Environments
+- - Configuration, Puppet, Chef, Ansible, Vagrant, Docker
+
+- Build and deploy tools (CI)
+- - Jenkins DSL
+
+Scalable &amp; reproducible
+
+And test it!
+
+Note:
+
+- minimise 100 fat finger via UI screw things up accidentally
+- prefer other CI (team city)
+- but jenkins servers are then reproducible in an instant
+- duplicate.
+- multiple CI instances etc
+
+
+SKIPPABLE
+
+					</script>
+				</section>
+
+
+
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
 	    			<script type="text/template">
 
@@ -926,9 +964,9 @@ CI abuse (Team City) <!-- .element: class="fragment" data-fragment-index="2" -->
 - Too many tools <!-- .element: class="fragment" data-fragment-index="3" -->
 - Automatic or one button <!-- .element: class="fragment" data-fragment-index="4" -->
 - For everything... <!-- .element: class="fragment" data-fragment-index="4" -->
+- For all environments  <!-- .element: class="fragment" data-fragment-index="5" -->
 - No longer chores  <!-- .element: class="fragment" data-fragment-index="5" -->
 - Never abused  <!-- .element: class="fragment" data-fragment-index="5" -->
-- All enviroments  <!-- .element: class="fragment" data-fragment-index="5" -->
 
 More and more tools <!-- .element: class="fragment" data-fragment-index="6" -->
 
@@ -956,36 +994,6 @@ Note:
 - for all environments
 
 - Tools  dashboards, investigations, payment plans promotion tru envs
-
-					</script>
-				</section>
-
-				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
-	    			<script type="text/template">
-
-
-### Version control everything
-
-- Environments
-- - Puppet, Chef, Ansible, Vagrant, Docker
-
-- Build and deploy tools
-- - Jenkins DSL
-
-Scalable &amp; reproducible
-
-And test it!
-
-Note:
-
-- minimise 100 fat finger via UI screw things up accidentally
-- prefer other CI (team city)
-- but jenkins servers are then reproducible in an instant
-- duplicate.
-- multiple CI instances etc
-
-
-SKIPPABLE
 
 					</script>
 				</section>
@@ -1030,7 +1038,6 @@ new SbtMicroserviceJobBuilder('myamazeballs-service').
 
 				</section>
 
-				</section>
 
 
 				<section data-markdown data-background="#007700" data-transition="zoom-in slide-out">
@@ -1038,16 +1045,14 @@ new SbtMicroserviceJobBuilder('myamazeballs-service').
 
 ### Battle scars &amp; Q&amp;A 
 
-* Not roll forward dependencies
-* Environment bottle necks
-* No feature flag bottle necks
-* Pull Request flood
-* Pull Request graveyard
-* No communication before urgent work
-* Perfect storm of versions
-* Too many frameworks
-* Too many tools
-* Dumb down too much
+- Perfect storm of versions
+- Release bottle necks
+- Environment bottle necks
+- No feature flag development
+- Requirements &amp; pull Request flood
+- Pull request graveyard
+- Too many, few, bad, old frameworks &amp; tools
+- Dumb down too much
 
 ![](images/jump.gif)
 
@@ -1062,6 +1067,8 @@ Might too generic
 - Crap tools
 - ninjas that go too often off the reservation
 - clones that dont try to improve, dont spot mistakes
+- No communication before urgent work
+- dumb down , outsourced new to scala 
 
 SKIPPABLE
 
