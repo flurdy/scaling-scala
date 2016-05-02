@@ -70,7 +70,11 @@ by @flurdy
 
 Note:
 
-scale well
+- well funded
+- scale massively
+- some practices
+- some tools
+- some scars
 
 
 					</script>
@@ -106,17 +110,21 @@ Note:
 - maybe startup or big budget allocation
 
 - best practices
-- pitfalls
-- battle scars
+- quick rundown
+
+- Architecture
+- microservices
+- MS management tool
+
+- code style
+- how you scale affects this
 
 - Versions and upgrading tricky but essential
 - will show a tool sbt-bobby we have been using
 
-- Architecture
-- describe micro service management tool
-
-- Tools
-- describe some previous automation
+- Tools &amp; automation
+- essential everywhere
+- but specifically when scaling
 
 Not covering:
 - project management,
@@ -144,8 +152,8 @@ Not covering:
 	<li class="fragment fade-up" data-fragment-index="1">Ivar Abrahamsen</li>
 	<li class="fragment fade-up" data-fragment-index="1">Norwegian. Live in England</li>
 	<li class="fragment fade-up" data-fragment-index="2">Consultant at [Eray by Flurdy](https://eray.uk)</li>
-	<li class="fragment fade-up" data-fragment-index="2">Writes whilst learning at <a href="https://flurdy.com/docs">flurdy.com</a></li>
-	<li class="fragment fade-up" data-fragment-index="2">Rants at <a href="http://twitter.com/flurdy">@flurdy</a></li>
+	<li class="fragment fade-up" data-fragment-index="2">Write whilst learning at <a href="https://flurdy.com/docs">flurdy.com</a></li>
+	<li class="fragment fade-up" data-fragment-index="2">Rant via <a href="http://twitter.com/flurdy">@flurdy</a></li>
 </ul>
 
 
@@ -153,16 +161,11 @@ Note:
 
 2 mins
 
-- not the pigs
-- Technical Architect, Tech Lead, Dev
-- manchester uni
-- startups in manchester
-- oslo consultancy, banks and telcos
-- too icy
-- hants only snowed last week
-- startup in london and consultant since
 - Hampshire with my little girls
-- write whilst learning
+- not the pigs
+- studied &amp; worked in manchester
+- oslo too icy
+- Technical Architect, Tech Lead, Dev
 
 
 					</script>
@@ -179,12 +182,15 @@ Note:
 
 Note:
 
+3 mins
+
 - startup quadrupled in 1 year
 - about 20 scala developers
 
 - very different scaling experience
 
 - public sector over 200 scala developers
+- Abstract says 30 but now 50
 
 - ie outsourcing
 - consultancy, telco &amp; finance) mostly by outsourcing internally
@@ -204,8 +210,8 @@ Note:
 - Recruitment, staff turnover, onboarding <!-- .element: class="fragment" -->
 - Parallel projects bottle necks <!-- .element: class="fragment" -->
 - Delivery pipeline bottle necks <!-- .element: class="fragment" -->
-- Testing consistency <!-- .element: class="fragment" -->
 - Code &amp; framework conventions &amp; proliferation <!-- .element: class="fragment" -->
+- Testing consistency <!-- .element: class="fragment" -->
 - Evolving ecosystem &amp; keeping abreast <!-- .element: class="fragment" -->
 - Tech debt bankruptcy <!-- .element: class="fragment" -->
 
@@ -221,7 +227,7 @@ dont forget scaling references slide
 - funding via VC or government budget, mandated to be used immediately
 - parallel work
 
-- recruitment
+- recruitment immediately
 - talent pool
 - metioned later - affects code
 - scala mainstream means others are also scaling
@@ -241,6 +247,7 @@ dont forget scaling references slide
 - spring, ddd, actor
 
 - abreast so can recruit
+- Evolving ecosystem internal and external
 - Forsaken projects 
 
 
@@ -275,15 +282,17 @@ Note:
 
 ### Best practices
 
-- Keep all services up to date <!-- .element: class="fragment" data-fragment-index="1" -->
-- Cull faltering services <!-- .element: class="fragment" data-fragment-index="1" -->
-- Micro services are cattle not pets <!-- .element: class="fragment" data-fragment-index="1" -->
-- Technical communication <!-- .element: class="fragment" data-fragment-index="2" -->
-- Team and project information <!-- .element: class="fragment" data-fragment-index="2" -->
-- Automate it all <!-- .element: class="fragment" data-fragment-index="3" -->
+- Technical platform &amp; team communications <!-- .element: class="fragment" adata-fragment-index="2" -->
+- Service catalog <!-- .element: class="fragment" adata-fragment-index="3" -->
+- Onboarding with pairing  <!-- .element: class="fragment" adata-fragment-index="3" -->
+- Keep all services up to date <!-- .element: class="fragment" adata-fragment-index="1" -->
+- Microservices are cattle not pets <!-- .element: class="fragment" adata-fragment-index="1" -->
+- Automate it all <!-- .element: class="fragment" adata-fragment-index="4" -->
 
 
 Note:
+
+9 mins
 
 - tech coms across platform
 - blog of upcoming changes
@@ -294,7 +303,8 @@ Note:
 - tech chats
 - Q&amp;A chat rooms for each team/service
 
-- service catalog
+- service
+- may be automated, but wiki page works
 - Documented approach to integration, changes
 - PRs, new mandatory integrations
 - services escalation
@@ -302,8 +312,13 @@ Note:
 - weekly tech show case
 - book clubs etc
 
+- Cull faltering services &amp; API
+
 - no fat fingers
 
+- note this does not cover recruitment
+
+- more in architecture procedures
 
 SKIPPABLE
 
@@ -334,7 +349,7 @@ Note:
 - standardised base service framework and libraries
 - roll forward API
 - pipeline covered more in next section
-- continuas delivery
+- continuous delivery
 
 					</script>
 				</section>
@@ -364,7 +379,7 @@ Note:
 
 ### Microservices
 
-- Evolve by divide &amp; conquer emerging monolithics <!-- .element: class="fragment"  -->
+- Evolve by divide &amp; conquer emerging monoliths <!-- .element: class="fragment"  -->
 - Keep'em dumb <!-- .element: class="fragment" daata-fragment-index="1" -->
 - Roll forward releases <!-- .element: class="fragment" daata-fragment-index="2" -->
 - Tooling <!-- .element: class="fragment" daata-fragment-index="4" -->
@@ -376,11 +391,11 @@ Note:
 13 mins
 
 - microservice is a known architecture
-- Devide, split, evolve,
 - divide &amp; conquer = more teams/people
 - Rinse - repeat
-- No big rewrite 
-- Rewrite by StranglerApplication
+- No big rewrite
+- StranglerApplication
+- Local management for dev and test
 
 					</script>
 				</section>
@@ -393,10 +408,15 @@ Note:
 - Spin up all dependencies <!-- .element: class="fragment" -->
 - Including databases <!-- .element: class="fragment" -->
 - Real, mocks, stubs <!-- .element: class="fragment" -->
-- Releases, Snapshots, Source <!-- .element: class="fragment" -->
+- Releases, snapshots, source <!-- .element: class="fragment" -->
 - Fast <!-- .element: class="fragment" -->
 
 Note:
+
+14 mins
+
+- requirements
+- what you look for
 
 - including transitive dependencies
 - systems not library dependencies
@@ -422,16 +442,12 @@ Local microservices management <!-- .element: class="fragment"  adata-fragment-i
 - Service catalog <!-- .element: class="fragment"  adata-fragment-index="3" -->
 - Profiles (stacks) of services <!-- .element: class="fragment"  adata-fragment-index="3" -->
 - Configuration overrides <!-- .element: class="fragment"  adata-fragment-index="4" -->
-- Automatic dynamic integration tests <!-- .element: class="fragment"  adata-fragment-index="5" -->
+- Automatic dynamic integration test support <!-- .element: class="fragment"  adata-fragment-index="5" -->
 - Snapshot binary or source <!-- .element: class="fragment"  adata-fragment-index="6" -->
 
 Note:
 
-- far from perfect
-- principles still apply
-- not advocating using it
-- writen in python
-- Not docker
+15 mins
 
 - can spin up stubs where needed
 - profiles: spin up stacks
@@ -455,6 +471,8 @@ Note:
 - Not that fast  <!-- .element: class="fragment"  -->
 
 Note:
+
+16 mins
 
 - far from perfect
 - principles still apply
@@ -519,6 +537,8 @@ Share and evolve coding style <!-- .element: class="fragment" data-fragment-inde
 
 Note:
 
+19 mins
+
 Not going to mandate full FP or just imperative java without semi colon
 
 ROC: Chat with ex colleague (Noel)
@@ -533,7 +553,6 @@ This depends on:-
 - clever, challenging code,
 - KISS, continual new java converts.
 - who will extend/fix it tomorrow/next quarter
-- dont be stupid
 - make it a bit better
 - take pride in your work
 - pair two way learning
@@ -560,15 +579,15 @@ Note:
 
 21 mins
 
-- per team
-- self starter
-- high skill
-- Anything goes Play, Akka, Spray, Unfiltered, Fineagle, Spark
 - standardised per team
+- self starter
+- startp Play, Akka, Spray, Unfiltered, Fineagle, Spark
 - Spray and akka services,
 - play tools
 - node.js customer facing
-- Mostly Play
+
+- large corp =  play or akka
+
 - Dont stagnate
 
 					</script>
